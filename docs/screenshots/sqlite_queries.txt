@@ -1,0 +1,12 @@
+python --version: Python 3.12.10
+db: dataset.db 349.6 MB
+SELECT COUNT(*) FROM records
+ -> (3145725,)
+SELECT COUNT(*) FROM countries
+ -> (265,)
+SELECT COUNT(*) FROM indicators
+ -> (1486,)
+SELECT indicator_code, COUNT(*), AVG(value) FROM records GROUP BY indicator_code LIMIT 5
+ -> [('AG.CON.FERT.PT.ZS', 1904, 780.096035435921), ('AG.CON.FERT.ZS', 3041, 204709.88437812903), ('AG.LND.AGRI.K2', 3760, 2907967.124833794)]
+SELECT COUNT(*) FROM records WHERE year BETWEEN 2000 AND 2020
+ -> (1374774,)
