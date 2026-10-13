@@ -13,3 +13,7 @@ __pycache__/
 *.feather
 *.pickle
 *.pkl
+*.csv
+[Bb]in/
+[Oo]bj/
+.vs/
