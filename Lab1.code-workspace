@@ -1,0 +1,77 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "csharp/Lab1Cleaning" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [88],
+    "files.encoding": "utf8",
+    "dotnet.defaultSolution": "csharp/Lab1Cleaning.sln"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-toolsai.jupyter",
+      "charliermarsh.ruff",
+      "ms-dotnettools.csharp",
+      "ms-dotnettools.csdevkit"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "py: sample",
+        "type": "shell",
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe -m src.pipeline --sample",
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "py: full",
+        "type": "shell",
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe -m src.pipeline",
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "cs: sample",
+        "type": "shell",
+        "command": "dotnet run --project csharp/Lab1Cleaning -- --sample",
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "cs: full",
+        "type": "shell",
+        "command": "dotnet run --project csharp/Lab1Cleaning -c Release",
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: pipeline",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "src.pipeline",
+        "console": "integratedTerminal",
+        "args": ["--sample"]
+      },
+      {
+        "name": "C#: Lab1Cleaning",
+        "type": "dotnet",
+        "request": "launch",
+        "projectPath": "${workspaceFolder}/csharp/Lab1Cleaning/Lab1Cleaning.csproj",
+        "args": ["--sample"]
+      }
+    ]
+  }
+}
